@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BlockTitle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">24sp</item>
+        <item name="android:lineSpacingMultiplier">0</item>
+        <item name="android:textColor">@color/color_text</item>
+    </style>
+
+    <style name="Description">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:lineSpacingExtra">20sp</item>
+        <item name="android:lineSpacingMultiplier">0</item>
+        <item name="android:textColor">@color/color_text</item>
+    </style>
+
+    <style name="Description.Gray" parent="@style/Description">
+        <item name="android:textColor">@color/color_text_description_gray</item>
+    </style>
+
+    <style name="FootnoteText" parent="@style/Description">
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">18sp</item>
+    </style>
+
+    <style name="FootnoteText.Gray" parent="@style/FootnoteText">
+        <item name="android:textColor">@color/color_text_description_gray</item>
+    </style>
+
+    <style name="PrimaryButtonText" parent="Description">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>
