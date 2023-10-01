@@ -1,3 +1,2 @@
 rootProject.name = "EnglishLearnAndFight"
-include (":app", ":login")
-include ':uikit'
+include (":app", ":login", ":uikit", ":core", ":core_api", ":base_screen")

@@ -1,15 +1,17 @@
 package com.example.englishlearnandfight
 
 import android.app.Application
+import com.example.core_api.providers.AppFacade
+import com.example.core_api.providers.ProvidersFacade
 
-class App: Application() {
-    private lateinit var appComponent: ApplicationComponent
+class App: Application(), AppFacade {
+    private lateinit var facadeComponent: FacadeComponent
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = ApplicationComponent.getAppComponent(this)
+        facadeComponent = FacadeComponent.init(this)
     }
 
-    fun getAppComponent() : ApplicationComponent =
-        appComponent
+    override fun getFacade(): ProvidersFacade =
+        facadeComponent
 }
