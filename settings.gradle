@@ -1,4 +1,5 @@
 rootProject.name = "EnglishLearnAndFight"
-include (":app", ":login", ":uikit", ":core", ":core_api", ":base_screen")
-include ':core_factory'
-include ':main'
+include (":app", ":main")
+include (":login:feature_login", ':login:login_api')
+include(":uikit", ":base_screen")
+include(':core:core_impl', ":core:core_factory", ":core:core_api")

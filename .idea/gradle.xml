@@ -14,9 +14,12 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base_screen" />
             <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/core_api" />
-            <option value="$PROJECT_DIR$/core_factory" />
+            <option value="$PROJECT_DIR$/core/core_api" />
+            <option value="$PROJECT_DIR$/core/core_factory" />
+            <option value="$PROJECT_DIR$/core/core_impl" />
             <option value="$PROJECT_DIR$/login" />
+            <option value="$PROJECT_DIR$/login/feature_login" />
+            <option value="$PROJECT_DIR$/login/login_api" />
             <option value="$PROJECT_DIR$/main" />
             <option value="$PROJECT_DIR$/uikit" />
           </set>

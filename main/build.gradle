@@ -17,9 +17,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":core_api"))
-    implementation(project(":core_factory"))
-    implementation(project(":login"))
+    implementation(project(":core:core_api"))
+    implementation(project(":core:core_factory"))
+    implementation(project(':login:feature_login',))
     implementation(project(":base_screen"))
 
     //Dagger
