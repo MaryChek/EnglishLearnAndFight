@@ -2,7 +2,6 @@ package com.example.englishlearnandfight
 
 import android.content.Context
 import com.example.core_api.providers.AppProvider
-import com.example.core_api.providers.ProvidersFacade
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

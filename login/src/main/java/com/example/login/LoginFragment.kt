@@ -8,13 +8,14 @@ import com.example.core_api.providers.AppFacade
 import com.example.login.databinding.FragmentLoginBinding
 import com.example.login.di.LoginComponent
 import com.example.login.models.LoginScreenState
+import com.example.login.navigation.FromLogin
 import com.example.login.viewmodel.LoginViewModel
 import com.example.login.viewmodel.LoginViewModelFactory
 import com.example.uikit.views.onChangeTextListener
 import javax.inject.Inject
 
 class LoginFragment :
-    BaseScreenFragment<FragmentLoginBinding, LoginScreenState>(R.layout.fragment_login) {
+    BaseScreenFragment<LoginScreenState, FragmentLoginBinding, FromLogin>(R.layout.fragment_login) {
 
     override lateinit var viewModel: LoginViewModel
 
