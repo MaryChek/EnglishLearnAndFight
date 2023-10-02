@@ -4,4 +4,6 @@ import com.example.basescreen.viewmodels.BaseScreenViewModel
 import com.example.profile.navigation.FromProfile
 
 class ProfileViewModel : BaseScreenViewModel<Any, FromProfile>("") {
+    fun onStartTrainClick() =
+        handleNavigate(FromProfile.GoTo.Navigate.Game)
 }

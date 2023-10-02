@@ -20,6 +20,7 @@ dependencies {
 
     implementation(project(":uikit"))
     implementation(project(":core:core_api"))
+    implementation(project(":game:game_api"))
     implementation(project(":core:core_factory"))
     implementation(project(":base_screen"))
 

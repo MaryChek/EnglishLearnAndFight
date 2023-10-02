@@ -23,6 +23,11 @@ abstract class BaseFragmentWithViewBinding<ViewBindingType : ViewBinding>(
 
     protected abstract fun onCreateViewBinding(view: View): ViewBindingType
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
     @CallSuper
     override fun onDestroy() {
         super.onDestroy()

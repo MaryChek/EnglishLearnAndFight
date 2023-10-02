@@ -19,10 +19,10 @@ import javax.inject.Inject
 class LoginFragment :
     BaseScreenFragment<LoginScreenState, FragmentLoginBinding, FromLogin>(R.layout.fragment_login) {
 
-    override lateinit var viewModel: LoginViewModel
-
     @Inject
     lateinit var router: LoginRouter
+
+    override lateinit var viewModel: LoginViewModel
 
     @Inject
     lateinit var viewModelFactory: LoginViewModelFactory

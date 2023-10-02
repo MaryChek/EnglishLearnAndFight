@@ -11,6 +11,7 @@ import dagger.Provides
 @Module
 interface LoginModule {
 
+    //todo это не нужно, кажется
     @Binds
     fun bindsLoginViewModelFactory(loginViewModelFactory: LoginViewModelFactory): ViewModelProvider.Factory
 

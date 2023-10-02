@@ -10,12 +10,16 @@ import com.example.core_api.providers.MainComponentProvider
 import com.example.profile.databinding.FragmentProfileBinding
 import com.example.profile.di.ProfileComponent
 import com.example.profile.navigation.FromProfile
+import com.example.profile.navigation.ProfileRouter
 import com.example.profile.viewmodel.ProfileViewModel
 import com.example.profile.viewmodel.ProfileViewModelFactory
 import javax.inject.Inject
 
 class ProfileFragment :
     BaseScreenFragment<Any, FragmentProfileBinding, FromProfile>(R.layout.fragment_profile) {
+
+    @Inject
+    lateinit var router: ProfileRouter
 
     override lateinit var viewModel: ProfileViewModel
 
@@ -37,6 +41,7 @@ class ProfileFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupName()
+        setupClickListeners()
     }
 
     private fun setupName() {
@@ -45,9 +50,19 @@ class ProfileFragment :
         }
     }
 
-    override fun handleState(screenState: Any) {
-
+    private fun setupClickListeners() {
+        binding?.btnTrain?.setOnClickListener {
+            viewModel.onStartTrainClick()
+        }
     }
+
+    override fun handleNavigate(destination: FromProfile) {
+        when (destination) {
+            is FromProfile.GoTo -> router.goTo(destination)
+        }
+    }
+
+    override fun handleState(screenState: Any) {}
 
     companion object {
         private const val PROFILE_NAME_ARG = "profile_name_arg"
