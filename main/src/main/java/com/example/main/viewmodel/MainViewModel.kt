@@ -1,10 +1,10 @@
 package com.example.main.viewmodel
 
 import com.example.basescreen.viewmodels.BaseNavigateViewModel
-import com.example.login.navigation.FromLogin
+import com.example.main.navigation.FromMain
 
-class MainViewModel : BaseNavigateViewModel<FromLogin>() {
-    fun onViewCreated() {
-        handleNavigate(FromLogin.GoTo.NewRootScreen.Profile)
-    }
+class MainViewModel : BaseNavigateViewModel<FromMain>() {
+
+    fun init() =
+        handleNavigate(FromMain.GoTo.NewRootScreen.Login)
 }

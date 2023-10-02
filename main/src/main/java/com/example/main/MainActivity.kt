@@ -2,17 +2,18 @@ package com.example.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentFactory
-import com.example.login.LoginFragment
+import androidx.lifecycle.ViewModelProviders
 import com.example.main.di.ActivityComponentHolder
 import com.example.main.di.MainActivityComponent
+import com.example.main.viewmodel.MainViewModel
+import com.example.main.viewmodel.MainViewModelFactory
 import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
-import com.github.terrakok.cicerone.androidx.Creator
-import com.github.terrakok.cicerone.androidx.FragmentScreen
+import com.example.basescreen.livedata.observeEvent
+import com.example.login_api.LoginScreen
+import com.example.main.navigation.FromMain
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -26,6 +27,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     @Inject
     protected lateinit var navigatorHolder: NavigatorHolder
+
+    protected lateinit var viewModel: MainViewModel
+
+    @Inject
+    protected lateinit var viewModelFactory: MainViewModelFactory
 
     override fun onResumeFragments() {
         super.onResumeFragments()
@@ -41,26 +47,27 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         setTheme(R.style.AppTheme_Main)
         super.onCreate(savedInstanceState)
         initializeComponent()
+        setupObservers()
         if (savedInstanceState == null) {
-            addRootFragment()
+            viewModel.init()
+        }
+    }
+
+    private fun setupObservers() =
+        observeEvent(viewModel.navigate, ::handleNavigation)
+
+    private fun handleNavigation(destination: FromMain) {
+        when (destination) {
+            is FromMain.GoTo.NewRootScreen.Login ->
+                router.newRootScreen(LoginScreen.Login)
+            is FromMain.GoTo.Back ->
+                finish()
         }
     }
 
     private fun initializeComponent() {
         getActivityComponent().inject(this)
-    }
-
-    private fun addRootFragment() {
-        router.newRootScreen(
-            FragmentScreen(fragmentCreator = object : Creator<FragmentFactory, Fragment> {
-                override fun create(argument: FragmentFactory): Fragment =
-                    LoginFragment()
-            })
-        )
-//        supportFragmentManager.beginTransaction().apply {
-//            replace(R.id.fragment_container, LoginFragment())
-//            addToBackStack(null)
-//        }.commit()
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
     }
 
     fun getActivityComponent(): MainActivityComponent =
