@@ -12,11 +12,12 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.example.basescreen.livedata.observeEvent
+import com.example.core_api.providers.MainComponentProvider
 import com.example.login_api.LoginScreen
 import com.example.main.navigation.FromMain
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity(R.layout.activity_main), MainComponentProvider {
 
     private val navigator: Navigator by lazy {
         AppNavigator(this, R.id.fragment_container)
@@ -70,7 +71,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
     }
 
-    fun getActivityComponent(): MainActivityComponent =
+    override fun getActivityComponent(): MainActivityComponent =
         ActivityComponentHolder.getActivityComponent()
 
     override fun onDestroy() {

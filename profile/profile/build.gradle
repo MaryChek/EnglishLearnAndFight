@@ -26,4 +26,7 @@ dependencies {
     //Dagger
     implementation 'com.google.dagger:dagger:2.42'
     kapt 'com.google.dagger:dagger-compiler:2.42'
+
+    //Cicerone
+    implementation "com.github.terrakok:cicerone:6.6"
 }

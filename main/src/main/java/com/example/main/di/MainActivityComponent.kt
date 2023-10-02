@@ -1,6 +1,7 @@
 package com.example.main.di
 
 import com.example.core_api.providers.NavigationProvider
+import com.example.core_api.providers.RouterProvider
 import com.example.core_factory.NavigationComponentFactory
 import com.example.main.MainActivity
 import dagger.Component
@@ -11,7 +12,7 @@ import javax.inject.Singleton
     dependencies = [NavigationProvider::class],
     modules = [MainActivityModule::class]
 )
-interface MainActivityComponent {
+interface MainActivityComponent : RouterProvider {
     fun inject(mainActivity: MainActivity)
 
     companion object {

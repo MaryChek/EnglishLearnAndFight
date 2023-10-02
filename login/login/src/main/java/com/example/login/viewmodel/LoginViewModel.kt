@@ -1,6 +1,5 @@
 package com.example.login.viewmodel
 
-import android.util.Log
 import com.example.basescreen.viewmodels.BaseScreenViewModel
 import com.example.core_api.data.UserStorage
 import com.example.login.models.LoginScreenState
@@ -16,8 +15,7 @@ class LoginViewModel(private val storage: UserStorage) :
 
     fun onContinueClick() {
         storage.saveName(model.name)
-
-        Log.d("LoginViewModel", "name is ${storage.getName()}")
+        handleNavigate(FromLogin.GoTo.NewRootScreen.Profile)
     }
 
     fun onNameChange(newName: String) =

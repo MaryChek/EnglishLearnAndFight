@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.example.basescreen.fragments.BaseScreenFragment
 import com.example.core_api.providers.AppFacade
+import com.example.core_api.providers.MainComponentProvider
 import com.example.login.databinding.FragmentLoginBinding
 import com.example.login.di.LoginComponent
 import com.example.login.models.LoginScreenState
@@ -28,8 +29,10 @@ class LoginFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LoginComponent.create((requireActivity().application as AppFacade).getFacade())
-            .inject(this)
+        LoginComponent.create(
+            (requireActivity().application as AppFacade).getFacade(),
+            requireActivity() as MainComponentProvider
+        ).inject(this)
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
     }
