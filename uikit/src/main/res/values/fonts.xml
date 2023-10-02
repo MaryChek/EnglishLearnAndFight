@@ -46,4 +46,8 @@
         <item name="android:lineSpacingExtra">0sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="SecondButtonText" parent="@style/PrimaryButtonText">
+        <item name="android:textColor">@color/color_selector_second_text_button</item>
+    </style>
 </resources>

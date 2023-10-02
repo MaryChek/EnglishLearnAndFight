@@ -41,4 +41,9 @@
         <item name="android:textAppearance">@style/PrimaryButtonText</item>
         <item name="backgroundTint">@color/color_selector_primary_button</item>
     </style>
+
+    <style name="ButtonPrimary.Second" parent="@style/ButtonPrimary">
+        <item name="android:textColor">@color/color_selector_second_text_button</item>
+        <item name="backgroundTint">@color/color_selector_second_button</item>
+    </style>
 </resources>

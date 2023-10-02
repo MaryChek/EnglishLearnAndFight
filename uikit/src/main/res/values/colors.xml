@@ -21,4 +21,7 @@
     <color name="color_bg_enter_name">#4DD061B1</color>
     <color name="button_pressed">@color/colorPrimaryDark</color>
     <color name="button_disabled">#C7C7C7</color>
+    <color name="color_bg_separator">#1F000000</color>
+    <color name="color_second">#FF6333</color>
+    <color name="color_second_dark">#9C3414</color>
 </resources>

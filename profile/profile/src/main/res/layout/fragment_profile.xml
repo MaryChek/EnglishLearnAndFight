@@ -36,7 +36,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp">
 
             <TextView
                 android:id="@+id/tvName"
@@ -56,6 +58,15 @@
                 app:drawableStartCompat="@drawable/ic_story"
                 app:layout_constraintTop_toBottomOf="@id/tvName" />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/color_bg_separator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvStory"
+                app:layout_constraintTop_toBottomOf="@id/tvStory" />
+
             <TextView
                 android:id="@+id/tvSettings"
                 style="@style/TextButton"
@@ -68,12 +79,20 @@
     </com.google.android.material.card.MaterialCardView>
 
     <Button
-        android:id="@+id/btnContinue"
+        android:id="@+id/btnTrain"
+        style="@style/ButtonPrimary.Second"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/start_train"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnFight" />
+
+    <Button
+        android:id="@+id/btnFight"
         style="@style/ButtonPrimary"
         android:layout_width="match_parent"
-        android:layout_marginTop="48dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:enabled="false"
-        android:text="@string/start_app"
+        android:text="@string/start_fight"
         app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
