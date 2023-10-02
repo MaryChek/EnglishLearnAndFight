@@ -3,7 +3,7 @@
     <string name="cat">cat</string>
     <string name="login_title">Чтобы быть на высоте\nи близиться к цели</string>
     <string name="login_subtitle">Изучаем английский, тренируемся и соревнуемся с друзьями</string>
-    <string name="login_enter">Введите ваше имя</string>
+    <string name="login_enter">Придумайте мне имя, будем играть вместе</string>
     <string name="search_hint">Имя</string>
     <string name="start_app">Продолжить</string>
 </resources>

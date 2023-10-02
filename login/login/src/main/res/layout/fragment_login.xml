@@ -30,14 +30,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="60dp"
             android:orientation="vertical">
 
             <TextView
@@ -64,7 +64,7 @@
                 style="@style/Description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="28dp"
                 android:text="@string/login_enter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -77,9 +77,9 @@
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_edit_text"
-                android:theme="@style/FootnoteText.Gray"
-                android:inputType="text"
                 android:imeOptions="actionDone"
+                android:inputType="text"
+                android:theme="@style/FootnoteText.Gray"
                 app:iconifiedByDefault="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -87,15 +87,17 @@
                 app:queryBackground="@null"
                 app:queryHint="@string/search_hint"
                 app:searchIcon="@null" />
+
+            <Button
+                android:id="@+id/btnContinue"
+                style="@style/ButtonPrimary"
+                android:layout_width="match_parent"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="16dp"
+                android:enabled="false"
+                android:text="@string/start_app"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etLoginName" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
-    <Button
-        android:id="@+id/btnContinue"
-        style="@style/ButtonPrimary"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="16dp"
-        android:text="@string/start_app"
-        android:enabled="false"
-        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
