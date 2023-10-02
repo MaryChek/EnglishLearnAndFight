@@ -1,7 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
     id 'com.android.library'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -19,6 +19,7 @@ android {
 dependencies {
     implementation(project(":uikit"))
     implementation(project(":core_api"))
+    implementation(project(":core_factory"))
     implementation(project(":base_screen"))
 
     //Dagger
