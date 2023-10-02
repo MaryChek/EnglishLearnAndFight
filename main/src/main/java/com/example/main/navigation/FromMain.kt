@@ -8,6 +8,8 @@ sealed class FromMain : Action() {
 
         sealed class NewRootScreen : GoTo(), Action.NewRootScreen {
             object Login : NewRootScreen()
+
+            class Profile(val name: String) : NewRootScreen()
         }
     }
 }

@@ -1,3 +1,5 @@
 package com.example.core_api.providers
 
-interface ProvidersFacade : AppProvider
+import com.example.core_api.data.UserStorageProvider
+
+interface ProvidersFacade : AppProvider, UserStorageProvider

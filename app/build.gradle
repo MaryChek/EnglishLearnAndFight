@@ -37,6 +37,7 @@ dependencies {
 
     implementation(project(":main"))
     implementation(project(":core:core_api"))
+    implementation(project(":core:core_factory"))
 
     //Dagger
     implementation 'com.google.dagger:dagger:2.42'

@@ -12,9 +12,11 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.example.basescreen.livedata.observeEvent
+import com.example.core_api.providers.AppFacade
 import com.example.core_api.providers.MainComponentProvider
 import com.example.login_api.LoginScreen
 import com.example.main.navigation.FromMain
+import com.example.profile_api.ProfileScreen
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(R.layout.activity_main), MainComponentProvider {
@@ -61,6 +63,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), MainComponentPro
         when (destination) {
             is FromMain.GoTo.NewRootScreen.Login ->
                 router.newRootScreen(LoginScreen.Login)
+            is FromMain.GoTo.NewRootScreen.Profile ->
+                router.newRootScreen(ProfileScreen.Profile(destination.name))
             is FromMain.GoTo.Back ->
                 finish()
         }
@@ -72,7 +76,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), MainComponentPro
     }
 
     override fun getActivityComponent(): MainActivityComponent =
-        ActivityComponentHolder.getActivityComponent()
+        ActivityComponentHolder.getActivityComponent((application as AppFacade).getFacade())
 
     override fun onDestroy() {
         super.onDestroy()

@@ -19,7 +19,6 @@ android {
 dependencies {
     implementation(project(":uikit"))
     implementation(project(":core:core_api"))
-    implementation(project(":core:core_factory"))
     implementation(project(":base_screen"))
     implementation(project(":profile:profile_api"))
 
