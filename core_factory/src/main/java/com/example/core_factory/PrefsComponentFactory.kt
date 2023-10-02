@@ -1,6 +1,6 @@
 package com.example.core_factory
 
-import com.example.core.data.di.DaggerPrefsComponent
+import com.example.core.di.DaggerPrefsComponent
 import com.example.core_api.data.UserStorageProvider
 import com.example.core_api.providers.AppProvider
 

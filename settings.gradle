@@ -1,3 +1,4 @@
 rootProject.name = "EnglishLearnAndFight"
 include (":app", ":login", ":uikit", ":core", ":core_api", ":base_screen")
 include ':core_factory'
+include ':main'

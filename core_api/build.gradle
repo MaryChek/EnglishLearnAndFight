@@ -10,3 +10,8 @@ android {
         minSdk 24
     }
 }
+
+dependencies {
+    //Cicerone
+    implementation "com.github.terrakok:cicerone:6.6"
+}

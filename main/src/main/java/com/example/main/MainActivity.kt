@@ -1,8 +1,7 @@
-package com.example.englishlearnandfight
+package com.example.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.englishlearnandfight.R
 import com.example.login.LoginFragment
 
 class MainActivity : AppCompatActivity() {

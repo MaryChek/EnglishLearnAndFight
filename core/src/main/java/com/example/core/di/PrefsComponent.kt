@@ -1,4 +1,4 @@
-package com.example.core.data.di
+package com.example.core.di
 
 import com.example.core_api.data.UserStorageProvider
 import com.example.core_api.providers.AppProvider

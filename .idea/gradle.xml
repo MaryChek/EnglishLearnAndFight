@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/core_api" />
             <option value="$PROJECT_DIR$/core_factory" />
             <option value="$PROJECT_DIR$/login" />
+            <option value="$PROJECT_DIR$/main" />
             <option value="$PROJECT_DIR$/uikit" />
           </set>
         </option>

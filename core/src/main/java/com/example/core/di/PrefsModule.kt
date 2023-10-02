@@ -1,4 +1,4 @@
-package com.example.core.data.di
+package com.example.core.di
 
 import android.content.Context
 import com.example.core.data.storage.Prefs
