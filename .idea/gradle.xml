@@ -21,6 +21,9 @@
             <option value="$PROJECT_DIR$/login/login" />
             <option value="$PROJECT_DIR$/login/login_api" />
             <option value="$PROJECT_DIR$/main" />
+            <option value="$PROJECT_DIR$/profile" />
+            <option value="$PROJECT_DIR$/profile/profile" />
+            <option value="$PROJECT_DIR$/profile/profile_api" />
             <option value="$PROJECT_DIR$/uikit" />
           </set>
         </option>
