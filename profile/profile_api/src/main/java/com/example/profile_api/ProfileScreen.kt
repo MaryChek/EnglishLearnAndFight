@@ -7,8 +7,9 @@ import com.github.terrakok.cicerone.androidx.Creator
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object ProfileScreen {
-    object Profile : FragmentScreen(fragmentCreator = object : Creator<FragmentFactory, Fragment> {
-        override fun create(argument: FragmentFactory): Fragment =
-            ProfileFragment()
-    })
+    data class Profile(val name: String) :
+        FragmentScreen(fragmentCreator = object : Creator<FragmentFactory, Fragment> {
+            override fun create(argument: FragmentFactory): Fragment =
+                ProfileFragment.newInstance(name)
+        })
 }

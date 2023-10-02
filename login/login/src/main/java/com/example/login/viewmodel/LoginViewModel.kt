@@ -14,8 +14,12 @@ class LoginViewModel(private val storage: UserStorage) :
     }
 
     fun onContinueClick() {
-        storage.saveName(model.name)
-        handleNavigate(FromLogin.GoTo.NewRootScreen.Profile)
+        takeIf {
+            model.isContinueEnable
+        }?.let {
+            storage.saveName(model.name)
+            handleNavigate(FromLogin.GoTo.NewRootScreen.Profile(model.name))
+        }
     }
 
     fun onNameChange(newName: String) =

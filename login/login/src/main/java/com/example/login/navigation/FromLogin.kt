@@ -7,7 +7,7 @@ sealed class FromLogin : Action() {
         object Back : GoTo()
 
         sealed class NewRootScreen : GoTo(), Action.NewRootScreen {
-            object Profile : NewRootScreen()
+            class Profile(val profileName: String) : NewRootScreen()
         }
     }
 }

@@ -2,6 +2,7 @@ package com.example.profile
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProviders
 import com.example.basescreen.fragments.BaseScreenFragment
 import com.example.core_api.providers.AppFacade
@@ -33,7 +34,29 @@ class ProfileFragment :
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProfileViewModel::class.java)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupName()
+    }
+
+    private fun setupName() {
+        arguments?.getString(PROFILE_NAME_ARG)?.let { name ->
+            binding?.tvName?.text = name
+        }
+    }
+
     override fun handleState(screenState: Any) {
 
+    }
+
+    companion object {
+        private const val PROFILE_NAME_ARG = "profile_name_arg"
+
+        fun newInstance(name: String) : ProfileFragment =
+            ProfileFragment().apply {
+                arguments = bundleOf(
+                    PROFILE_NAME_ARG to name,
+                )
+            }
     }
 }
