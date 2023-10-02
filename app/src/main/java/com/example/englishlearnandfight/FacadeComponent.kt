@@ -6,7 +6,7 @@ import com.example.core_api.providers.ProvidersFacade
 import dagger.Component
 
 @Component(
-    dependencies = [AppProvider::class/*, NavigationProvider::class*/]
+    dependencies = [AppProvider::class]
 )
 interface FacadeComponent : ProvidersFacade {
 
@@ -15,7 +15,6 @@ interface FacadeComponent : ProvidersFacade {
         fun init(application: Application) : FacadeComponent =
             DaggerFacadeComponent.builder()
                 .appProvider(ApplicationComponent.create(application))
-//                .navigationProvider()
                 .build()
     }
 }
