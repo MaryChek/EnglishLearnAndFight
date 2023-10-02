@@ -9,6 +9,7 @@ import com.example.login.databinding.FragmentLoginBinding
 import com.example.login.di.LoginComponent
 import com.example.login.models.LoginScreenState
 import com.example.login.navigation.FromLogin
+import com.example.login.navigation.LoginRouter
 import com.example.login.viewmodel.LoginViewModel
 import com.example.login.viewmodel.LoginViewModelFactory
 import com.example.uikit.views.onChangeTextListener
@@ -18,6 +19,9 @@ class LoginFragment :
     BaseScreenFragment<LoginScreenState, FragmentLoginBinding, FromLogin>(R.layout.fragment_login) {
 
     override lateinit var viewModel: LoginViewModel
+
+    @Inject
+    lateinit var router: LoginRouter
 
     @Inject
     lateinit var viewModelFactory: LoginViewModelFactory
@@ -44,6 +48,12 @@ class LoginFragment :
         }
         binding?.etLoginName?.onChangeTextListener { name ->
             viewModel.onNameChange(name)
+        }
+    }
+
+    override fun handleNavigate(destination: FromLogin) {
+        when (destination) {
+            is FromLogin.GoTo -> router.goTo(destination)
         }
     }
 

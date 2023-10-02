@@ -2,6 +2,7 @@ package com.example.login.di
 
 import com.example.core_api.data.UserStorageProvider
 import com.example.core_api.providers.ProvidersFacade
+import com.example.core_api.providers.RouterProvider
 import com.example.core_factory.PrefsComponentFactory
 import com.example.login.LoginFragment
 import dagger.Component
@@ -9,7 +10,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    dependencies = [ProvidersFacade::class, UserStorageProvider::class],
+    dependencies = [ProvidersFacade::class, UserStorageProvider::class, RouterProvider::class],
     modules = [LoginModule::class]
 )
 interface LoginComponent {
