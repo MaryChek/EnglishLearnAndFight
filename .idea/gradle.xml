@@ -17,6 +17,9 @@
             <option value="$PROJECT_DIR$/core/core_api" />
             <option value="$PROJECT_DIR$/core/core_factory" />
             <option value="$PROJECT_DIR$/core/core_impl" />
+            <option value="$PROJECT_DIR$/game" />
+            <option value="$PROJECT_DIR$/game/game" />
+            <option value="$PROJECT_DIR$/game/game_api" />
             <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/login/login" />
             <option value="$PROJECT_DIR$/login/login_api" />

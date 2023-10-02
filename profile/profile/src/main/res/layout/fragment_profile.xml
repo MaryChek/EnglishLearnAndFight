@@ -83,7 +83,7 @@
         style="@style/ButtonPrimary.Second"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="16dp"
-        android:text="@string/start_train"
+        android:text="@string/to_train"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@id/btnFight" />
 
@@ -93,6 +93,6 @@
         android:layout_width="match_parent"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/start_fight"
+        android:text="@string/to_fight"
         app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

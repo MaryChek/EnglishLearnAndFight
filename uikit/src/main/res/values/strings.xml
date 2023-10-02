@@ -6,8 +6,10 @@
     <string name="login_enter">Придумайте мне имя, будем играть вместе</string>
     <string name="search_hint">Имя</string>
     <string name="start_app">Продолжить</string>
-    <string name="start_fight">Вступить в бой</string>
-    <string name="start_train">Тренироваться</string>
+    <string name="to_fight">Вступить в бой</string>
+    <string name="start_train">Начать тренировку</string>
+    <string name="start_fight">Начать битву</string>
+    <string name="to_train">Тренироваться</string>
     <string name="profile_name">Имя</string>
     <string name="profile_story">История игр</string>
 </resources>
