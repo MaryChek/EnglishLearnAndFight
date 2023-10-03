@@ -46,4 +46,9 @@
         <item name="android:textColor">@color/color_selector_second_text_button</item>
         <item name="backgroundTint">@color/color_selector_second_button</item>
     </style>
+
+    <style name="App.Toolbar.WithCloseButton" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+        <item name="android:background">@null</item>
+        <item name="android:navigationIcon">@drawable/ic_close</item>
+    </style>
 </resources>
