@@ -37,9 +37,14 @@ dependencies {
 
     implementation(project(":main"))
     implementation(project(":core:core_api"))
+    implementation(project(":game:game_api"))
+    implementation(project(":game:game"))
     implementation(project(":core:core_factory"))
 
     //Dagger
     implementation 'com.google.dagger:dagger:2.42'
     kapt 'com.google.dagger:dagger-compiler:2.42'
+
+    //Cicerone
+    implementation "com.github.terrakok:cicerone:6.6"
 }

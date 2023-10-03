@@ -7,4 +7,6 @@ import com.example.game.navigation.FromStartGame
 class StartGameViewModel : BaseScreenViewModel<StartGameScreenState, FromStartGame>(
     StartGameScreenState()
 ) {
+    fun onStartClick() =
+        handleNavigate(FromStartGame.GoTo.Navigate.Game)
 }

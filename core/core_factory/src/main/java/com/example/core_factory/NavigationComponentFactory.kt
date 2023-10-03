@@ -1,9 +1,9 @@
 package com.example.core_factory
 
 import com.example.core.di.DaggerNavigationComponent
-import com.example.core_api.providers.NavigationProvider
+import com.example.core_api.providers.RouterNavigationProvider
 
 object NavigationComponentFactory {
-    fun createNavigationRouterComponent() : NavigationProvider =
+    fun createNavigationRouterComponent() : RouterNavigationProvider =
         DaggerNavigationComponent.create()
 }

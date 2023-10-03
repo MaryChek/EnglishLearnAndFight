@@ -5,10 +5,12 @@ import com.example.core_api.data.UserStorageProvider
 import com.example.core_api.providers.AppProvider
 import com.example.core_api.providers.ProvidersFacade
 import com.example.core_factory.PrefsComponentFactory
+import com.example.game.di.GameScreensModule
 import dagger.Component
 
 @Component(
-    dependencies = [AppProvider::class, UserStorageProvider::class]
+    dependencies = [AppProvider::class, UserStorageProvider::class],
+    modules = [GameScreensModule::class]
 )
 interface FacadeComponent : ProvidersFacade {
 

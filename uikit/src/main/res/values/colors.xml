@@ -16,6 +16,7 @@
     <color name="transparent">#00000000</color>
 
     <color name="color_bg">@color/white</color>
+    <color name="color_card_bg">#FFF1EC</color>
     <color name="color_text">@color/black</color>
     <color name="color_text_description_gray">@color/black_alpha_55</color>
     <color name="color_bg_enter_name">#4DD061B1</color>

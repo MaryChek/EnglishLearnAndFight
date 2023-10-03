@@ -1,6 +1,6 @@
 package com.example.main.di
 
-import com.example.core_api.providers.NavigationProvider
+import com.example.core_api.providers.RouterNavigationProvider
 import com.example.core_api.providers.ProvidersFacade
 import com.example.core_api.providers.RouterProvider
 import com.example.core_factory.NavigationComponentFactory
@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    dependencies = [NavigationProvider::class, ProvidersFacade::class],
+    dependencies = [RouterNavigationProvider::class, ProvidersFacade::class],
     modules = [MainActivityModule::class]
 )
 interface MainActivityComponent : RouterProvider {
@@ -20,7 +20,7 @@ interface MainActivityComponent : RouterProvider {
         fun buildMainComponent(providersFacade: ProvidersFacade) : MainActivityComponent =
             DaggerMainActivityComponent.builder()
                 .providersFacade(providersFacade)
-                .navigationProvider(NavigationComponentFactory.createNavigationRouterComponent())
+                .routerNavigationProvider(NavigationComponentFactory.createNavigationRouterComponent())
                 .build()
     }
 }

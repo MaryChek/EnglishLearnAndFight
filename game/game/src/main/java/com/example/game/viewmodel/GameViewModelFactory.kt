@@ -11,3 +11,11 @@ class StartGameViewModelFactory @Inject constructor() : ViewModelProvider.Factor
         return StartGameViewModel() as T
     }
 }
+
+@Suppress("UNCHECKED_CAST")
+class CardGameViewModelFactory @Inject constructor() : ViewModelProvider.Factory {
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return GameViewModel() as T
+    }
+}
