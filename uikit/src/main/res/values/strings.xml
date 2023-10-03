@@ -5,6 +5,7 @@
     <string name="login_subtitle">Изучаем английский, тренируемся и соревнуемся с друзьями</string>
     <string name="login_enter">Придумайте мне имя, будем играть вместе</string>
     <string name="search_hint">Имя</string>
+    <string name="answer_hint">Ответ</string>
     <string name="start_app">Продолжить</string>
     <string name="to_fight">Вступить в бой</string>
     <string name="start_train">Начать тренировку</string>
@@ -12,5 +13,7 @@
     <string name="to_train">Тренироваться</string>
     <string name="profile_name">Имя</string>
     <string name="profile_story">История игр</string>
-    <string name="game_helper_description">Если не можете вспомнить смахните вверх</string>
+    <string name="game_helper_description">Если не можете вспомнить, пропускайте</string>
+    <string name="submit">Ответить</string>
+    <string name="next">Пропустить</string>
 </resources>
