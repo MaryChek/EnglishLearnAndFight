@@ -32,28 +32,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </Toolbar>
 
-    <TextView
-        android:id="@+id/card_front"
-        style="@style/CartForGame"
+    <com.example.game.CardGameView
+        android:id="@+id/cardGame"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginVertical="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:text="Яблоко" />
-
-    <TextView
-        android:id="@+id/card_back"
-        style="@style/CartForGame"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginVertical="16dp"
-        android:alpha="0"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:text="Яблоко" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/textView"
