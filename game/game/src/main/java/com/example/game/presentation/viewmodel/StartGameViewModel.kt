@@ -9,4 +9,10 @@ class StartGameViewModel : BaseScreenViewModel<StartGameScreenState, FromStartGa
 ) {
     fun onStartClick() =
         handleNavigate(FromStartGame.GoTo.Navigate.Game)
+
+    fun onToolbarClick() =
+        onBackPressed()
+
+    override fun onBackPressed() =
+        handleNavigate(FromStartGame.GoTo.BackTo.Profile)
 }

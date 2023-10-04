@@ -48,20 +48,20 @@ class CardGameView @JvmOverloads constructor(
         if (!isDefaultSet) {
             setTextAndRotation(text)
         } else {
-            binding.cardFront.text = text
+            binding.textFront.text = text
             isDefaultSet = false
         }
     }
 
     private fun setTextAndRotation(text: String) {
         if (isFront) {
-            binding.cardBack.text = text
+            binding.textBack.text = text
             frontAnim.setTarget(binding.cardFront)
             backAnim.setTarget(binding.cardBack)
             frontAnim.start()
             backAnim.start()
         } else {
-            binding.cardFront.text = text
+            binding.textFront.text = text
             frontAnim.setTarget(binding.cardBack)
             backAnim.setTarget(binding.cardFront)
             frontAnim.start()

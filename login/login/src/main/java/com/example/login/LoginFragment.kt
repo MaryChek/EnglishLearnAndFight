@@ -27,6 +27,9 @@ class LoginFragment :
     @Inject
     lateinit var viewModelFactory: LoginViewModelFactory
 
+    override fun onBackPressed(): Boolean =
+        false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         LoginComponent.create(

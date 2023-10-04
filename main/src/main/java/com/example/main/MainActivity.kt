@@ -3,6 +3,7 @@ package com.example.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
+import com.example.basescreen.fragments.BaseNavigateViewModelFragment
 import com.example.main.di.ActivityComponentHolder
 import com.example.main.di.MainActivityComponent
 import com.example.main.viewmodel.MainViewModel
@@ -35,6 +36,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), MainComponentPro
 
     @Inject
     protected lateinit var viewModelFactory: MainViewModelFactory
+
+    private val currentNavigateFragment: BaseNavigateViewModelFragment<*, *>?
+        get() = supportFragmentManager.findFragmentById(R.id.fragment_container) as? BaseNavigateViewModelFragment<*, *>
 
     override fun onResumeFragments() {
         super.onResumeFragments()
@@ -82,6 +86,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), MainComponentPro
         super.onDestroy()
         if (!isChangingConfigurations) {
             ActivityComponentHolder.clear()
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        when {
+            currentNavigateFragment?.onBackPressed() == true -> Unit
+            else -> super.onBackPressed()
         }
     }
 }

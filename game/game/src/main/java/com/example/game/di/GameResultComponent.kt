@@ -18,7 +18,7 @@ interface GameResultComponent {
     interface Factory {
         fun create(
             routerProvider: RouterProvider,
-            @BindsInstance result: String,
+            @BindsInstance result: Int,
             @BindsInstance resources: Resources
         ): GameResultComponent
     }
@@ -26,7 +26,7 @@ interface GameResultComponent {
     companion object {
         fun create(
             activity: MainComponentProvider,
-            result: String,
+            result: Int,
             resources: Resources
         ): GameResultComponent =
             DaggerGameResultComponent.factory()

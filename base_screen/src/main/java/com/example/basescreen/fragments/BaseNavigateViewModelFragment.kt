@@ -22,7 +22,8 @@ abstract class BaseNavigateViewModelFragment<
         setupObserves()
     }
 
-    protected open fun onBackPressed(): Boolean {
+    // override `false` if fragment needs default navigation
+    open fun onBackPressed(): Boolean {
         viewModel?.onBackPressed()
         return true
     }

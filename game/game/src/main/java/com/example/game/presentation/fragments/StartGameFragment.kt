@@ -46,6 +46,9 @@ class StartGameFragment :
     }
 
     private fun setupClickListeners() {
+        binding?.toolbar?.setNavigationOnClickListener {
+            viewModel.onToolbarClick()
+        }
         binding?.btnFight?.setOnClickListener {
             viewModel.onStartClick()
         }

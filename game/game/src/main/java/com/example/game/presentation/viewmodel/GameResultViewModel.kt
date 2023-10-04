@@ -7,7 +7,7 @@ import com.example.game.presentation.model.GameResultScreenState
 import com.example.game.presentation.navigation.FromGameResult
 
 class GameResultViewModel(
-    result: String,
+    result: Int,
     private val interactor: GameInteractor,
     resources: Resources,
 ) : BaseScreenViewModel<GameResultScreenState, FromGameResult>(
@@ -20,7 +20,7 @@ class GameResultViewModel(
 
     private fun updateModel(
         maxResult: Int? = model.maxResult,
-        result: String = model.currentResult,
+        result: Int = model.currentResult,
         resources: Resources = model.resources
     ) {
         model = GameResultScreenState(resources, result, maxResult)

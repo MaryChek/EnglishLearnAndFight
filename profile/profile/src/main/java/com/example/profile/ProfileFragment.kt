@@ -26,6 +26,9 @@ class ProfileFragment :
     @Inject
     protected lateinit var viewModelFactory: ProfileViewModelFactory
 
+    override fun onBackPressed(): Boolean =
+        false
+
     override fun onCreateViewBinding(view: View): FragmentProfileBinding =
         FragmentProfileBinding.bind(view)
 

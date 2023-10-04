@@ -7,7 +7,11 @@ sealed class FromCardGame : Action() {
         object Back: GoTo()
 
         sealed class Navigate : GoTo(), Action.Navigate {
-            class ToResult(val result: String) : Navigate()
+            class ToResult(val result: Int) : Navigate()
         }
+    }
+
+    sealed class Command : FromCardGame(), Action.Command {
+        object ClearAnswer : Command()
     }
 }

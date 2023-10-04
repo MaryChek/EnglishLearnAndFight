@@ -7,5 +7,9 @@ sealed class FromStartGame : Action() {
         sealed class Navigate : GoTo(), Action.Navigate {
             object Game : Navigate()
         }
+
+        sealed class BackTo : Navigate(), Action.BackTo {
+            object Profile : BackTo()
+        }
     }
 }

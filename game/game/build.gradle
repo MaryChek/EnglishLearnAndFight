@@ -32,4 +32,7 @@ dependencies {
 
     //Cicerone
     implementation "com.github.terrakok:cicerone:6.6"
+
+    //Lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
 }

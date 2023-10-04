@@ -33,10 +33,10 @@ class GameResultFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initComponentAndViewModel((arguments?.getString(ARG_RESULT) ?: DEFAULT_RES))
+        initComponentAndViewModel((arguments?.getInt(ARG_RESULT) ?: 0))
     }
 
-    private fun initComponentAndViewModel(result: String) {
+    private fun initComponentAndViewModel(result: Int) {
         GameResultComponent
             .create(requireActivity() as MainComponentProvider, result, resources)
             .inject(this)
@@ -72,7 +72,7 @@ class GameResultFragment :
         private const val ARG_RESULT = "arg_result"
         private const val DEFAULT_RES = "0"
 
-        fun newInstance(result: String): GameResultFragment =
+        fun newInstance(result: Int): GameResultFragment =
             GameResultFragment().apply {
                 arguments = bundleOf(
                     ARG_RESULT to result

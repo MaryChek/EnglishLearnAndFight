@@ -1,55 +1,95 @@
 package com.example.game.presentation.viewmodel
 
+import androidx.lifecycle.viewModelScope
 import com.example.basescreen.viewmodels.BaseScreenViewModel
 import com.example.game.domain.GameInteractor
 import com.example.game.presentation.model.CardGameScreenState
 import com.example.game.presentation.navigation.FromCardGame
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class GameViewModel(private val interactor: GameInteractor) :
-    BaseScreenViewModel<CardGameScreenState, FromCardGame>(CardGameScreenState("")) {
+    BaseScreenViewModel<CardGameScreenState, FromCardGame>(
+        CardGameScreenState(
+            userAnswer = "",
+            wordIndex = 0,
+            correctIndicator = 0,
+            maxWords = interactor.getWordCount()
+        )
+    ) {
+
+    private var refreshJob: Job? = null
+
+    private fun launch(func: suspend () -> Unit) =
+        viewModelScope.launch(Dispatchers.Main) {
+            func.invoke()
+        }
 
     fun onToolbarClick() =
-        onBackPressed()
-
-    override fun onBackPressed() =
         handleNavigate(FromCardGame.GoTo.Back)
 
-    fun onViewCreated() {
-        val word = interactor.getNextWord()
-        word?.let {
-            updateModel(currentWord = word)
+    override fun onBackPressed() =
+        Unit
+
+    fun onViewCreated() =
+        setNewWord()
+
+    private fun updateModel(
+        answer: String = model.userAnswer,
+        currentWord: String = model.currentWord,
+        shouldUpdateWord: Boolean = false,
+        shouldUpdate: Boolean = true,
+        correctIndicator: Int = model.correctIndicator,
+        wordIndex: Int = model.wordIndex,
+        maxWords: Int = model.maxWords
+    ) {
+        model = CardGameScreenState(
+            answer, currentWord, shouldUpdateWord, correctIndicator, wordIndex, maxWords
+        )
+        if (shouldUpdate) {
+            handleScreenState()
+        }
+        if (shouldUpdateWord) {
+            handleNavigate(FromCardGame.Command.ClearAnswer)
         }
     }
 
-    private fun updateModel(
-        answer: String? = model.userAnswer,
-        currentWord: String = model.currentWord,
-    ) {
-        model = CardGameScreenState(answer, currentWord)
-        handleScreenState()
-    }
-
     fun onNextClick() {
-        updateModel(answer = null)
+        updateModel(answer = "")
         getNextWord()
     }
 
-    private fun getNextWord() {
+    private fun getNextWord() =
+        setNewWord() ?: closeGame()
+
+    private fun setNewWord(): String? {
         val word = interactor.getNextWord()
-        word?.let {
-            updateModel(currentWord = word)
-        } ?: closeGame()
+        word?.apply {
+            updateModel(
+                currentWord = word,
+                shouldUpdateWord = true,
+                wordIndex = model.wordIndex + 1
+            )
+        }
+        return word
     }
 
     private fun closeGame() {
         interactor.closeGame()
-        handleNavigate(FromCardGame.GoTo.Navigate.ToResult("1"))
+        handleNavigate(FromCardGame.GoTo.Navigate.ToResult(model.correctIndicator))
     }
 
     fun onAnswerChange(answer: String) =
         updateModel(answer)
 
     fun onAnswerSubmitClick() {
-        getNextWord()
+        launch {
+            val isCurrent = interactor.checkTranslate(model.currentWord, model.userAnswer)
+            if (isCurrent) {
+                updateModel(correctIndicator = model.correctIndicator + 1, shouldUpdate = false)
+            }
+            getNextWord()
+        }
     }
 }

@@ -5,9 +5,9 @@ import com.example.uikit.R
 
 class GameResultScreenState(
     val resources: Resources,
-    val currentResult: String,
+    val currentResult: Int,
     val maxResult: Int? = null,
 ) {
     val tvResult =
-        resources.getString(R.string.result_game, currentResult, maxResult?.toString())
+        resources.getString(R.string.result_game, currentResult.toString(), maxResult?.toString())
 }

@@ -8,18 +8,26 @@
     android:background="@drawable/app_gradient"
     tools:context="com.example.game.presentation.fragments.StartGameFragment">
 
+    <Toolbar
+        android:id="@+id/toolbar"
+        style="@style/App.Toolbar.WithBackButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_start"
         style="@style/SBCardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="32dp"
+        android:layout_marginBottom="32dp"
         app:cardElevation="6dp"
         app:layout_constraintBottom_toTopOf="@+id/btnFight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

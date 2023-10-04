@@ -25,7 +25,7 @@ class CardGameViewModelFactory @Inject constructor(private val interactor: GameI
 
 @Suppress("UNCHECKED_CAST")
 class GameResultViewModelFactory @Inject constructor(
-    private val result: String,
+    private val result: Int,
     private val interactor: GameInteractor,
     private val resources: Resources
 ) : ViewModelProvider.Factory {

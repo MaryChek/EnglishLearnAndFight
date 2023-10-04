@@ -3,6 +3,7 @@ package com.example.game.presentation.routers
 import com.example.basescreen.navigation.BaseRouter
 import com.example.game.presentation.navigation.FromStartGame
 import com.example.game.presentation.navigation.GameScreensMediatorImpl
+import com.example.profile_api.ProfileScreen
 import com.github.terrakok.cicerone.Router
 import javax.inject.Inject
 
@@ -11,5 +12,7 @@ class StartGameRouter @Inject constructor(private val router: Router) : BaseRout
         when (destination) {
             is FromStartGame.GoTo.Navigate.Game ->
                 router.navigateTo(GameScreensMediatorImpl.Companion.Game)
+            is FromStartGame.GoTo.BackTo.Profile ->
+                router.backTo(ProfileScreen.Profile(""))
         }
 }

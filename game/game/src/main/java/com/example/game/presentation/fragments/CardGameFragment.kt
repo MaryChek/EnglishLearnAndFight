@@ -50,6 +50,13 @@ class CardGameFragment : BaseScreenFragment<CardGameScreenState, FragmentCardGam
         }
         binding?.btnNext?.setOnClickListener {
             viewModel.onNextClick()
+            it.isEnabled = false
+            it.postDelayed(
+                {
+                    binding?.btnNext?.isEnabled = true
+                },
+                DELAY_TO_UPDATE_SECONDS
+            )
         }
         binding?.btnSubmit?.setOnClickListener {
             viewModel.onAnswerSubmitClick()
@@ -61,12 +68,24 @@ class CardGameFragment : BaseScreenFragment<CardGameScreenState, FragmentCardGam
 
     override fun handleState(screenState: CardGameScreenState) {
         binding?.btnSubmit?.isEnabled = screenState.isBtnSubmitEnable
-        binding?.cardGame?.updateCard(screenState.currentWord)
+        binding?.tvWordCount?.text = screenState.tvWordCount
+        if (screenState.shouldUpdateWord) {
+            binding?.cardGame?.updateCard(screenState.currentWord)
+        }
     }
 
     override fun handleNavigate(destination: FromCardGame) {
         when (destination) {
             is FromCardGame.GoTo -> router.goTo(destination)
+            is FromCardGame.Command.ClearAnswer ->
+                binding?.etAnswer?.apply {
+                    setQuery("", false)
+                    clearFocus()
+                }
         }
+    }
+
+    companion object {
+        private const val DELAY_TO_UPDATE_SECONDS = 900L
     }
 }

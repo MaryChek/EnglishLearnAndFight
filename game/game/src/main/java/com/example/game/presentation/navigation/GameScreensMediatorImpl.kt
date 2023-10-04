@@ -26,7 +26,7 @@ class GameScreensMediatorImpl @Inject constructor() : GameScreensMediator {
                     StartGameFragment()
             })
 
-        data class GameResult(val result: String) : FragmentScreen(fragmentCreator = object : Creator<FragmentFactory, Fragment> {
+        data class GameResult(val result: Int) : FragmentScreen(fragmentCreator = object : Creator<FragmentFactory, Fragment> {
             override fun create(argument: FragmentFactory): Fragment =
                 GameResultFragment.newInstance(result)
         })
