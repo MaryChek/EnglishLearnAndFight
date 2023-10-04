@@ -20,6 +20,8 @@ class GameInteractor {
         counter = 0
     }
 
+    fun getWordCount() = MAX_GAME_WORDS
+
     companion object {
         private const val MAX_GAME_WORDS = 10
     }

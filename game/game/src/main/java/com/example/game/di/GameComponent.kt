@@ -2,7 +2,7 @@ package com.example.game.di
 
 import com.example.core_api.providers.MainComponentProvider
 import com.example.core_api.providers.RouterProvider
-import com.example.game.fragments.CardGameFragment
+import com.example.game.presentation.fragments.CardGameFragment
 import dagger.Component
 
 @Component(

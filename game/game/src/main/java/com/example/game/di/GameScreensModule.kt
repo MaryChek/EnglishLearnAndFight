@@ -1,6 +1,6 @@
 package com.example.game.di
 
-import com.example.game.navigation.GameScreensMediatorImpl
+import com.example.game.presentation.navigation.GameScreensMediatorImpl
 import com.example.game_api.GameScreensMediator
 import dagger.Binds
 import dagger.Module

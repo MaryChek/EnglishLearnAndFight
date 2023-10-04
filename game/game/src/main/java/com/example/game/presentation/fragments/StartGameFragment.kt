@@ -1,4 +1,4 @@
-package com.example.game.fragments
+package com.example.game.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -8,11 +8,11 @@ import com.example.core_api.providers.MainComponentProvider
 import com.example.game.R
 import com.example.game.databinding.FragmentStartGameBinding
 import com.example.game.di.StartGameComponent
-import com.example.game.model.StartGameScreenState
-import com.example.game.navigation.FromStartGame
-import com.example.game.navigation.StartGameRouter
-import com.example.game.viewmodel.StartGameViewModel
-import com.example.game.viewmodel.StartGameViewModelFactory
+import com.example.game.presentation.model.StartGameScreenState
+import com.example.game.presentation.navigation.FromStartGame
+import com.example.game.presentation.routers.StartGameRouter
+import com.example.game.presentation.viewmodel.StartGameViewModel
+import com.example.game.presentation.viewmodel.StartGameViewModelFactory
 import javax.inject.Inject
 
 class StartGameFragment :

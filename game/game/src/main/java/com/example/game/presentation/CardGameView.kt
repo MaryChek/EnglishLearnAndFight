@@ -1,4 +1,4 @@
-package com.example.game
+package com.example.game.presentation
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
@@ -6,6 +6,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.game.R
 import com.example.game.databinding.CardGameBinding
 
 class CardGameView @JvmOverloads constructor(

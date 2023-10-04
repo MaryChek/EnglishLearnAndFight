@@ -1,16 +1,21 @@
-package com.example.game.viewmodel
+package com.example.game.presentation.viewmodel
 
-import android.util.Log
 import com.example.basescreen.viewmodels.BaseScreenViewModel
 import com.example.game.domain.GameInteractor
-import com.example.game.model.CardGameScreenState
-import com.example.game.navigation.FromGame
+import com.example.game.presentation.model.CardGameScreenState
+import com.example.game.presentation.navigation.FromCardGame
 
-class GameViewModel(private val gameInteractor: GameInteractor) :
-    BaseScreenViewModel<CardGameScreenState, FromGame>(CardGameScreenState("")) {
+class GameViewModel(private val interactor: GameInteractor) :
+    BaseScreenViewModel<CardGameScreenState, FromCardGame>(CardGameScreenState("")) {
+
+    fun onToolbarClick() =
+        onBackPressed()
+
+    override fun onBackPressed() =
+        handleNavigate(FromCardGame.GoTo.Back)
 
     fun onViewCreated() {
-        val word = gameInteractor.getNextWord()
+        val word = interactor.getNextWord()
         word?.let {
             updateModel(currentWord = word)
         }
@@ -30,10 +35,15 @@ class GameViewModel(private val gameInteractor: GameInteractor) :
     }
 
     private fun getNextWord() {
-        val word = gameInteractor.getNextWord()
+        val word = interactor.getNextWord()
         word?.let {
             updateModel(currentWord = word)
-        } ?: Log.d("GameViewModel", "game ower")
+        } ?: closeGame()
+    }
+
+    private fun closeGame() {
+        interactor.closeGame()
+        handleNavigate(FromCardGame.GoTo.Navigate.ToResult("1"))
     }
 
     fun onAnswerChange(answer: String) =

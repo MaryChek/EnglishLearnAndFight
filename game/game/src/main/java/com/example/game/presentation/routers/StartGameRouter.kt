@@ -1,6 +1,8 @@
-package com.example.game.navigation
+package com.example.game.presentation.routers
 
 import com.example.basescreen.navigation.BaseRouter
+import com.example.game.presentation.navigation.FromStartGame
+import com.example.game.presentation.navigation.GameScreensMediatorImpl
 import com.github.terrakok.cicerone.Router
 import javax.inject.Inject
 

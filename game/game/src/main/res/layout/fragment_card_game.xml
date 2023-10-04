@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/app_gradient"
-    tools:context="com.example.game.fragments.StartGameFragment">
+    tools:context="com.example.game.presentation.fragments.StartGameFragment">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -32,7 +32,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </Toolbar>
 
-    <com.example.game.CardGameView
+    <com.example.game.presentation.CardGameView
         android:id="@+id/cardGame"
         android:layout_width="match_parent"
         android:layout_height="0dp"

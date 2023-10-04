@@ -1,4 +1,4 @@
-package com.example.game.navigation
+package com.example.game.presentation.navigation
 
 import com.example.basescreen.navigation.Action
 
