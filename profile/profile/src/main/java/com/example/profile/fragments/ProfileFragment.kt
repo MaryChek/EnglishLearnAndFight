@@ -1,4 +1,4 @@
-package com.example.profile
+package com.example.profile.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.basescreen.fragments.BaseScreenFragment
 import com.example.core_api.providers.AppFacade
 import com.example.core_api.providers.MainComponentProvider
+import com.example.profile.R
 import com.example.profile.databinding.FragmentProfileBinding
 import com.example.profile.di.ProfileComponent
 import com.example.profile.navigation.FromProfile
@@ -56,6 +57,22 @@ class ProfileFragment :
     private fun setupClickListeners() {
         binding?.btnTrain?.setOnClickListener {
             viewModel.onStartTrainClick()
+        }
+
+        binding?.btnFight?.setOnClickListener {
+            viewModel.onStartFightClick()
+        }
+
+        binding?.tvName?.setOnClickListener {
+            viewModel.onNameClick()
+        }
+
+        binding?.tvStory?.setOnClickListener {
+            viewModel.onGameHistoryClick()
+        }
+
+        binding?.tvSettings?.setOnClickListener {
+            viewModel.onSettingsClick()
         }
     }
 

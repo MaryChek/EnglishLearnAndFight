@@ -20,6 +20,7 @@
     <color name="color_text">@color/black</color>
     <color name="color_text_description_gray">@color/black_alpha_55</color>
     <color name="color_bg_enter_name">#4DD061B1</color>
+    <color name="color_bg_enter_answer">#FFDFD0</color>
     <color name="button_pressed">@color/colorPrimaryDark</color>
     <color name="button_disabled">#C7C7C7</color>
     <color name="color_bg_separator">#1F000000</color>

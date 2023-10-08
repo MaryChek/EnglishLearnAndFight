@@ -3,8 +3,7 @@ package com.example.profile.di
 import com.example.core_api.providers.MainComponentProvider
 import com.example.core_api.providers.ProvidersFacade
 import com.example.core_api.providers.RouterProvider
-import com.example.game_api.GameScreensMediator
-import com.example.profile.ProfileFragment
+import com.example.profile.fragments.ProfileFragment
 import dagger.Component
 
 @Component(
