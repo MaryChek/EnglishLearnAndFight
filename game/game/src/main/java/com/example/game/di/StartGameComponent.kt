@@ -7,7 +7,6 @@ import dagger.Component
 
 @Component(
     dependencies = [RouterProvider::class],
-    modules = [GameModule::class]
 )
 interface StartGameComponent {
     fun inject(startGameFragment: StartGameFragment)

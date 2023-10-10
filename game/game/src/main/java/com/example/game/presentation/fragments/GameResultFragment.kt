@@ -8,8 +8,11 @@ import com.example.basescreen.fragments.BaseScreenFragment
 import com.example.core_api.providers.MainComponentProvider
 import com.example.game.R
 import com.example.game.databinding.FragmentGameResultBinding
+import com.example.game.di.BaseGameComponent
+import com.example.game.di.BaseGameComponentHolder
 import com.example.game.di.GameResultComponent
 import com.example.game.presentation.model.GameResultScreenState
+import com.example.game.presentation.navigation.FromCardGame
 import com.example.game.presentation.navigation.FromGameResult
 import com.example.game.presentation.routers.GameResultRouter
 import com.example.game.presentation.viewmodel.GameResultViewModel
@@ -38,11 +41,19 @@ class GameResultFragment :
 
     private fun initComponentAndViewModel(result: Int) {
         GameResultComponent
-            .create(requireActivity() as MainComponentProvider, result, resources)
+            .create(
+                requireActivity() as MainComponentProvider,
+                getBaseGameComponent(),
+                result,
+                resources
+            )
             .inject(this)
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(GameResultViewModel::class.java)
     }
+
+    private fun getBaseGameComponent(): BaseGameComponent =
+        BaseGameComponentHolder.getComponent()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -63,10 +74,12 @@ class GameResultFragment :
         binding?.tvResult?.text = screenState.tvResult
     }
 
-    override fun handleNavigate(destination: FromGameResult) =
-        when (destination) {
-            is FromGameResult.GoTo -> router.goTo(destination)
+    override fun handleNavigate(destination: FromGameResult) {
+        if (destination is FromGameResult.GoTo) {
+            router.goTo(destination)
+            BaseGameComponentHolder.clear()
         }
+    }
 
     companion object {
         private const val ARG_RESULT = "arg_result"

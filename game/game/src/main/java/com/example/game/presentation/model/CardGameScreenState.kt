@@ -6,7 +6,8 @@ class CardGameScreenState(
     val shouldUpdateWord: Boolean = false,
     val correctIndicator: Int,
     val wordIndex: Int,
-    val maxWords: Int
+    val maxWords: Int,
+    val wordIsLoading: Boolean = false
 ) {
     val isBtnSubmitEnable: Boolean = userAnswer.isNotBlank()
 

@@ -7,6 +7,8 @@ import com.example.basescreen.fragments.BaseScreenFragment
 import com.example.core_api.providers.MainComponentProvider
 import com.example.game.R
 import com.example.game.databinding.FragmentCardGameBinding
+import com.example.game.di.BaseGameComponent
+import com.example.game.di.BaseGameComponentHolder
 import com.example.game.di.GameComponent
 import com.example.game.presentation.model.CardGameScreenState
 import com.example.game.presentation.navigation.FromCardGame
@@ -29,11 +31,14 @@ class CardGameFragment : BaseScreenFragment<CardGameScreenState, FragmentCardGam
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        GameComponent.create(requireActivity() as MainComponentProvider)
+        GameComponent.create(requireActivity() as MainComponentProvider, getBaseGameComponent())
             .inject(this)
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(GameViewModel::class.java)
     }
+
+    private fun getBaseGameComponent() : BaseGameComponent =
+        BaseGameComponentHolder.getComponent()
 
     override fun onCreateViewBinding(view: View): FragmentCardGameBinding =
         FragmentCardGameBinding.bind(view)
@@ -75,6 +80,9 @@ class CardGameFragment : BaseScreenFragment<CardGameScreenState, FragmentCardGam
     }
 
     override fun handleNavigate(destination: FromCardGame) {
+        if (destination is FromCardGame.GoTo.Back) {
+            BaseGameComponentHolder.clear()
+        }
         when (destination) {
             is FromCardGame.GoTo -> router.goTo(destination)
             is FromCardGame.Command.ClearAnswer ->

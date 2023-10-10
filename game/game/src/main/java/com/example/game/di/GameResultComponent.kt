@@ -8,8 +8,7 @@ import dagger.BindsInstance
 import dagger.Component
 
 @Component(
-    dependencies = [RouterProvider::class],
-    modules = [GameModule::class]
+    dependencies = [RouterProvider::class, InteractorProvider::class],
 )
 interface GameResultComponent {
     fun inject(fragment: GameResultFragment)
@@ -18,18 +17,20 @@ interface GameResultComponent {
     interface Factory {
         fun create(
             routerProvider: RouterProvider,
+            interactorProvider: InteractorProvider,
             @BindsInstance result: Int,
-            @BindsInstance resources: Resources
+            @BindsInstance resources: Resources,
         ): GameResultComponent
     }
 
     companion object {
         fun create(
             activity: MainComponentProvider,
+            baseGameComponent: BaseGameComponent,
             result: Int,
-            resources: Resources
+            resources: Resources,
         ): GameResultComponent =
             DaggerGameResultComponent.factory()
-                .create(activity.getActivityComponent(), result, resources)
+                .create(activity.getActivityComponent(), baseGameComponent, result, resources)
     }
 }
