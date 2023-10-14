@@ -1,8 +1,6 @@
 package com.example.profile.di
 
 import com.example.game_api.GameScreensMediator
-import com.example.profile.navigation.ProfileRouter
-import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
 import javax.inject.Provider

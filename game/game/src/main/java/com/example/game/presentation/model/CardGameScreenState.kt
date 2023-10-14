@@ -9,7 +9,7 @@ class CardGameScreenState(
     val maxWords: Int,
     val wordIsLoading: Boolean = false
 ) {
-    val isBtnSubmitEnable: Boolean = userAnswer.isNotBlank()
+    val isBtnSubmitEnable: Boolean = userAnswer.isNotBlank() && !wordIsLoading
 
     val tvWordCount: String = "$wordIndex/$maxWords"
 }

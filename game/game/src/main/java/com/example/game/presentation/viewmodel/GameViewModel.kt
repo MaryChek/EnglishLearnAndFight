@@ -1,7 +1,7 @@
 package com.example.game.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.example.basescreen.models.Status
 import com.example.basescreen.viewmodels.BaseScreenViewModel
 import com.example.game.data.model.Result
 import com.example.game.domain.GameInteractor
@@ -51,27 +51,21 @@ class GameViewModel(private val interactor: GameInteractor) :
         shouldUpdate: Boolean = true,
     ) {
         model = CardGameScreenState(
-            answer,
-            currentWord,
-            shouldUpdateWord,
-            correctIndicator,
-            wordIndex,
-            maxWords,
+            answer, currentWord, shouldUpdateWord, correctIndicator, wordIndex, maxWords,
             wordIsLoading
         )
         if (shouldUpdate) {
             handleScreenState()
         }
         if (shouldUpdateWord) {
-            handleNavigate(FromCardGame.Command.ClearAnswer)
+            clearUIAnswer()
         }
     }
 
+    private fun clearUIAnswer() =
+        handleNavigate(FromCardGame.Command.ClearAnswer)
+
     fun onNextClick() {
-        Log.d(
-            "GameInteractor",
-            "ViewModel : Кажется, слово очень сложное, давай следующее ------------"
-        )
         updateModel(answer = "")
         getNextWord()
     }
@@ -80,11 +74,13 @@ class GameViewModel(private val interactor: GameInteractor) :
         launch {
             if (!model.wordIsLoading) {
                 updateModel(wordIsLoading = true, shouldUpdate = false)
+                handleStatue(Status.LOADING)
                 interactor.getNextWord().let(::handleResult)
             }
         }
 
     private fun handleResult(result: Result<String>) {
+        handleStatue(result.status)
         when (result) {
             is Result.Success -> result.data?.let {
                 updateModel(
@@ -100,9 +96,6 @@ class GameViewModel(private val interactor: GameInteractor) :
     }
 
     private fun closeGame() {
-        Log.d(
-            "GameInteractor", "ViewModel : Пора заканчивать ---------------------------------------"
-        )
         updateModel(wordIsLoading = false, shouldUpdate = false)
         interactor.closeGame()
         handleNavigate(FromCardGame.GoTo.Navigate.ToResult(model.correctIndicator))
@@ -112,10 +105,6 @@ class GameViewModel(private val interactor: GameInteractor) :
         updateModel(answer)
 
     fun onAnswerSubmitClick() {
-        Log.d(
-            "GameInteractor",
-            "ViewModel : Пользователь нашел перевод, проверяй --------------------"
-        )
         val isCurrent = interactor.checkTranslate(model.currentWord, model.userAnswer)
         if (isCurrent) {
             updateModel(
@@ -123,6 +112,7 @@ class GameViewModel(private val interactor: GameInteractor) :
                 shouldUpdate = false
             )
         }
+        clearUIAnswer()
         getNextWord()
     }
 }

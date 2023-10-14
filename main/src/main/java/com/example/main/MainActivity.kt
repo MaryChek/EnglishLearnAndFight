@@ -10,14 +10,12 @@ import com.example.main.viewmodel.MainViewModel
 import com.example.main.viewmodel.MainViewModelFactory
 import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.example.basescreen.livedata.observeEvent
 import com.example.core_api.providers.AppFacade
 import com.example.core_api.providers.MainComponentProvider
-import com.example.login_api.LoginScreen
 import com.example.main.navigation.FromMain
-import com.example.profile_api.ProfileScreen
+import com.example.main.navigation.MainActivityRouter
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(R.layout.activity_main), MainComponentProvider {
@@ -27,7 +25,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), MainComponentPro
     }
 
     @Inject
-    protected lateinit var router: Router
+    protected lateinit var router: MainActivityRouter
 
     @Inject
     protected lateinit var navigatorHolder: NavigatorHolder
@@ -65,11 +63,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), MainComponentPro
 
     private fun handleNavigation(destination: FromMain) {
         when (destination) {
-            is FromMain.GoTo.NewRootScreen.Login ->
-                router.newRootScreen(LoginScreen.Login)
-            is FromMain.GoTo.NewRootScreen.Profile ->
-                router.newRootScreen(ProfileScreen.Profile(destination.name))
-            is FromMain.GoTo.Back ->
+            is FromMain.GoTo ->
+                router.goTo(destination)
+            is FromMain.Back ->
                 finish()
         }
     }

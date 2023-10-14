@@ -12,7 +12,6 @@ import com.example.game.di.BaseGameComponent
 import com.example.game.di.BaseGameComponentHolder
 import com.example.game.di.GameResultComponent
 import com.example.game.presentation.model.GameResultScreenState
-import com.example.game.presentation.navigation.FromCardGame
 import com.example.game.presentation.navigation.FromGameResult
 import com.example.game.presentation.routers.GameResultRouter
 import com.example.game.presentation.viewmodel.GameResultViewModel
@@ -20,7 +19,7 @@ import com.example.game.presentation.viewmodel.GameResultViewModelFactory
 import javax.inject.Inject
 
 class GameResultFragment :
-    BaseScreenFragment<GameResultScreenState, FragmentGameResultBinding, FromGameResult>(
+    BaseGameFragment<GameResultScreenState, FragmentGameResultBinding, FromGameResult>(
         R.layout.fragment_game_result
     ) {
     override lateinit var viewModel: GameResultViewModel
@@ -42,18 +41,12 @@ class GameResultFragment :
     private fun initComponentAndViewModel(result: Int) {
         GameResultComponent
             .create(
-                requireActivity() as MainComponentProvider,
-                getBaseGameComponent(),
-                result,
+                requireActivity() as MainComponentProvider, getBaseGameComponent(), result,
                 resources
-            )
-            .inject(this)
+            ).inject(this)
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(GameResultViewModel::class.java)
     }
-
-    private fun getBaseGameComponent(): BaseGameComponent =
-        BaseGameComponentHolder.getComponent()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

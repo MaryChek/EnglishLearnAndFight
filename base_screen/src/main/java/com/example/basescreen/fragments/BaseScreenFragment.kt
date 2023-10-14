@@ -5,6 +5,7 @@ import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
 import com.example.basescreen.livedata.observeEvent
+import com.example.basescreen.models.Status
 import com.example.basescreen.navigation.Action
 import com.example.basescreen.viewmodels.BaseScreenViewModel
 
@@ -25,8 +26,11 @@ abstract class BaseScreenFragment<
     protected open fun observeBaseLiveData() {
         viewModel?.let { vm ->
             observeEvent(vm.screenState, ::handleState)
+            observeEvent(vm.mainStatus, ::handleStatus)
         }
     }
 
     protected abstract fun handleState(screenState: ScreenState)
+
+    protected open fun handleStatus(status: Status) {}
 }

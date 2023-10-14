@@ -1,0 +1,17 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+    }
+}
+
+dependencies {
+    api(project(":base_screen"))
+    api(project(":uikit"))
+    api(project(":core:core_api"))
+}

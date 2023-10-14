@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.example.basescreen.fragments.BaseScreenFragment
+import com.example.core_api.providers.AppFacade
 import com.example.core_api.providers.MainComponentProvider
 import com.example.game.R
 import com.example.game.databinding.FragmentStartGameBinding
+import com.example.game.di.BaseGameComponent
+import com.example.game.di.BaseGameComponentHolder
 import com.example.game.di.StartGameComponent
 import com.example.game.presentation.model.StartGameScreenState
 import com.example.game.presentation.navigation.FromStartGame
@@ -16,7 +19,7 @@ import com.example.game.presentation.viewmodel.StartGameViewModelFactory
 import javax.inject.Inject
 
 class StartGameFragment :
-    BaseScreenFragment<StartGameScreenState, FragmentStartGameBinding, FromStartGame>(
+    BaseGameFragment<StartGameScreenState, FragmentStartGameBinding, FromStartGame>(
         R.layout.fragment_start_game
     ) {
     override lateinit var viewModel: StartGameViewModel
@@ -29,8 +32,10 @@ class StartGameFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        StartGameComponent.create(requireActivity() as MainComponentProvider)
-            .inject(this)
+        StartGameComponent.create(
+            requireActivity() as MainComponentProvider,
+            getBaseGameComponent()
+        ).inject(this)
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(StartGameViewModel::class.java)
     }

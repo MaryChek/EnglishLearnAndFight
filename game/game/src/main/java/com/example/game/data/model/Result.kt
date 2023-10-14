@@ -1,6 +1,7 @@
 package com.example.game.data.model
 
 import android.util.Log
+import com.example.basescreen.models.Status
 
 sealed class Result<out T>(val status: Status, val data: T?) {
 
@@ -14,16 +15,5 @@ sealed class Result<out T>(val status: Status, val data: T?) {
         val exceptionMessage: String? = throwable?.message
     }
 
-    class Loading<T> : Result<T>(Status.LOADING, null)
-
     class End<T> : Result<T>(Status.END, null)
-
-    companion object {
-        enum class Status {
-            SUCCESS,
-            ERROR,
-            LOADING,
-            END
-        }
-    }
 }

@@ -18,12 +18,10 @@ android {
 
 dependencies {
 
-    implementation(project(":uikit"))
-    implementation(project(":core:core_api"))
     implementation(project(":core:core_factory"))
-    implementation(project(":base_screen"))
     implementation(project(":game:game_api"))
     implementation(project(":profile:profile_api"))
+    implementation(project(":base_feature"))
 
     //Dagger
     implementation 'com.google.dagger:dagger:2.42'

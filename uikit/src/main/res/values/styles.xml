@@ -27,6 +27,16 @@
         <item name="cardPreventCornerOverlap">false</item>
     </style>
 
+    <style name="TextButton.Negative">
+        <item name="android:textAppearance">@style/SecondButtonText</item>
+        <item name="android:background">@color/color_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
     <style name="ButtonPrimary" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@null</item>
         <item name="android:layout_height">48dp</item>
@@ -54,5 +64,9 @@
 
     <style name="App.Toolbar.WithBackButton" parent="App.Toolbar.WithCloseButton">
         <item name="android:navigationIcon">@drawable/ic_nav_back</item>
+    </style>
+
+    <style name="ProgressBar.Primary" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/colorPrimary</item>
     </style>
 </resources>

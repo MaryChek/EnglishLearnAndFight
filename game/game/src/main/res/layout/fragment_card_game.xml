@@ -140,6 +140,19 @@
         app:queryHint="@string/answer_hint"
         app:searchIcon="@null" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:theme="@style/ProgressBar.Primary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/cardGame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cardGame"
+        tools:visibility="visible" />
+
     <Button
         android:id="@+id/btnSubmit"
         style="@style/ButtonPrimary"
@@ -150,9 +163,10 @@
         android:text="@string/submit"
         app:layout_constraintBottom_toTopOf="@+id/btnNext" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/btnNext"
-        style="@style/ButtonPrimary.Second"
+        style="@style/TextButton.Negative"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"

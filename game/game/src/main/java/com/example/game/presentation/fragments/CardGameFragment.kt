@@ -2,14 +2,14 @@ package com.example.game.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
-import com.example.basescreen.fragments.BaseScreenFragment
+import com.example.basescreen.models.Status
 import com.example.core_api.providers.MainComponentProvider
 import com.example.game.R
 import com.example.game.databinding.FragmentCardGameBinding
-import com.example.game.di.BaseGameComponent
 import com.example.game.di.BaseGameComponentHolder
-import com.example.game.di.GameComponent
+import com.example.game.di.CardGameComponent
 import com.example.game.presentation.model.CardGameScreenState
 import com.example.game.presentation.navigation.FromCardGame
 import com.example.game.presentation.routers.CardGameRouter
@@ -18,9 +18,10 @@ import com.example.game.presentation.viewmodel.GameViewModel
 import com.example.uikit.views.onChangeTextListener
 import javax.inject.Inject
 
-class CardGameFragment : BaseScreenFragment<CardGameScreenState, FragmentCardGameBinding, FromCardGame>(
-    R.layout.fragment_card_game
-) {
+class CardGameFragment :
+    BaseGameFragment<CardGameScreenState, FragmentCardGameBinding, FromCardGame>(
+        R.layout.fragment_card_game
+    ) {
     override lateinit var viewModel: GameViewModel
 
     @Inject
@@ -31,17 +32,31 @@ class CardGameFragment : BaseScreenFragment<CardGameScreenState, FragmentCardGam
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        GameComponent.create(requireActivity() as MainComponentProvider, getBaseGameComponent())
+        CardGameComponent.create(
+            requireActivity() as MainComponentProvider, getBaseGameComponent()
+        )
             .inject(this)
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(GameViewModel::class.java)
     }
 
-    private fun getBaseGameComponent() : BaseGameComponent =
-        BaseGameComponentHolder.getComponent()
-
     override fun onCreateViewBinding(view: View): FragmentCardGameBinding =
         FragmentCardGameBinding.bind(view)
+
+    override fun handleStatus(status: Status) {
+        when (status) {
+            Status.LOADING -> handleProgressStatus(true)
+            Status.SUCCESS,
+            Status.END,
+            Status.ERROR -> handleProgressStatus(false)
+        }
+    }
+
+    private fun handleProgressStatus(inProgress: Boolean) {
+        binding?.progressBar?.isVisible = inProgress
+        binding?.btnNext?.isEnabled = !inProgress
+//        binding?.btnSubmit?.isEnabled = !inProgress
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

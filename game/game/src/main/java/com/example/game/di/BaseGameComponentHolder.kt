@@ -1,10 +1,12 @@
 package com.example.game.di
 
-object BaseGameComponentHolder {
-    private var gameComponent: BaseGameComponent? = null
+import com.example.core_api.providers.AppFacade
 
-    fun getComponent() : BaseGameComponent =
-        gameComponent ?: BaseGameComponent.create()
+object BaseGameComponentHolder {
+    private var gameComponent: com.example.game.di.BaseGameComponent? = null
+
+    fun getComponent(appFacade: AppFacade) : com.example.game.di.BaseGameComponent =
+        gameComponent ?: com.example.game.di.BaseGameComponent.create(appFacade)
 
     fun clear() {
         gameComponent = null
